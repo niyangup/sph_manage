@@ -40,6 +40,10 @@ module.exports = {
       '/dev-api': {
         target: 'http://39.98.123.211:8170',
         pathRewrite: { '^/dev-api': '' }
+      },
+      '/api': {
+        target: 'http://39.98.123.211:8416',
+        pathRewrite: { '^/api': '' }
       }
     }
   },
