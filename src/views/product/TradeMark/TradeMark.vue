@@ -33,7 +33,7 @@
         prop="address"
         label="操作"
       >
-        <template v-slot="{row,$index}">
+        <template v-slot="{row}">
           <el-button type="warning" icon="el-icon-edit" size="mini" @click="update(row)">修改</el-button>
           <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleDelItem(row)">删除</el-button>
         </template>
