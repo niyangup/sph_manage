@@ -13,7 +13,8 @@ import store from './store'
 import router from './router'
 
 import '@/icons' // icon
-import '@/permission' // permission control
+import '@/permission'
+import CategorySelect from '@/components/CategorySelect/CategorySelect' // permission control
 
 /**
  * If you don't want to use mock-server
@@ -34,10 +35,11 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+Vue.component(CategorySelect.name, CategorySelect)
 
 new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App)
 })
