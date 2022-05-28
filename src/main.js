@@ -14,7 +14,8 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission'
-import CategorySelect from '@/components/CategorySelect/CategorySelect' // permission control
+import CategorySelect from '@/components/CategorySelect/CategorySelect'
+import HintButton from '@/components/HintButton/HintButton' // permission control
 
 /**
  * If you don't want to use mock-server
@@ -36,6 +37,7 @@ Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
 Vue.component(CategorySelect.name, CategorySelect)
+Vue.component(HintButton.name, HintButton)
 
 new Vue({
   el: '#app',
