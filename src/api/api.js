@@ -7,7 +7,6 @@ import * as user from './acl/user'
 import * as role from './acl/role'
 import * as permission from './acl/permission'
 
-console.log(permission)
 export default {
   trademark,
   attr,
