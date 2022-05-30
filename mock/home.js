@@ -1,3 +1,5 @@
+const Mock = require('mockjs')
+
 const data = require('./data.json')
 module.exports = [
   {
@@ -12,3 +14,8 @@ module.exports = [
     }
   }
 ]
+
+Mock.mock(process.env.VUE_APP_MOCK_API + '/home/list', 'get', {
+  code: 20000,
+  data
+})

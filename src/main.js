@@ -16,7 +16,7 @@ import '@/icons' // icon
 import '@/permission'
 import CategorySelect from '@/components/CategorySelect/CategorySelect'
 import HintButton from '@/components/HintButton/HintButton' // permission control
-
+import '../mock/home'
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
