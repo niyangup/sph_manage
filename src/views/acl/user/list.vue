@@ -135,6 +135,7 @@
 
 <script>
 import cloneDeep from 'lodash/cloneDeep'
+import Api from '@/api/api'
 
 export default {
   name: 'AclUserList',
@@ -202,7 +203,7 @@ export default {
     异步获取用户的角色列表
     */
     async getRoles() {
-      const result = await this.$API.user.getRoles(this.user.id)
+      const result = await Api.user.getRoles(this.user.id)
       const { allRolesList, assignRoles } = result.data
       this.allRoles = allRolesList
       this.userRoleIds = assignRoles.map(item => item.id)
@@ -227,7 +228,7 @@ export default {
       const userId = this.user.id
       const roleIds = this.userRoleIds.join(',')
       this.loading = true
-      const result = await this.$API.user.assignRoles(userId, roleIds)
+      const result = await Api.user.assignRoles(userId, roleIds)
       this.loading = false
       this.$message.success(result.message || '分配角色成功')
       this.resetRoleData()
@@ -297,7 +298,7 @@ export default {
     */
     revomveUsers() {
       this.$confirm('确定删除吗?').then(async() => {
-        await this.$API.user.removeUsers(this.selectedIds)
+        await Api.user.removeUsers(this.selectedIds)
         this.$message.success('删除成功')
         this.getUsers()
       }).catch(() => {
@@ -324,7 +325,7 @@ export default {
     删除某个用户
     */
     async removeUser(id) {
-      await this.$API.user.removeById(id)
+      await Api.user.removeById(id)
       this.$message.success('删除成功')
       this.getUsers(this.users.length === 1 ? this.page - 1 : this.page)
     },
@@ -336,7 +337,7 @@ export default {
       this.page = page
       const { limit, searchObj } = this
       this.listLoading = true
-      const result = await this.$API.user.getPageList(page, limit, searchObj)
+      const result = await Api.user.getPageList(page, limit, searchObj)
       this.listLoading = false
       const { items, total } = result.data
       this.users = items.filter(item => item.username !== 'admin')
@@ -368,7 +369,7 @@ export default {
         if (valid) {
           const { user } = this
           this.loading = true
-          this.$API.user[user.id ? 'update' : 'add'](user).then((result) => {
+          Api.user[user.id ? 'update' : 'add'](user).then((result) => {
             this.loading = false
             this.$message.success('保存成功!')
             this.getUsers(user.id ? this.page : 1)
